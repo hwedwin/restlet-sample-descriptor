@@ -30,6 +30,45 @@ mvn test -Pexport-to-apispark -Dexec.classpathScope="test" -Dapispark.login=<you
  - resources described by their interface in the package org.restlet.example.contact.api.resource
  - exception serialized in the package org.restlet.example.contact.api.core.exception
 
+####  Customization of the application
+ - in the constructor, `setName` and `setDescription`
+ 
+####  Customization of the resources, thanks to the Restlet Framework
+ - in the constructor, `setName` and `setDescription`
+
+####  Customization of a resource, thanks to Swagger annotations
+ - use the `@Api` annotation either on the annotated interface, or in the implementation class:
+
+```java
+@Api(value = "Companies", description = "Company list resource")
+```
+
+####  Customization of a method, thanks to Swagger annotations
+ - use the `@ApiOperation` annotation:
+
+```java
+@ApiOperation(value = "list the companies", tags = "company")
+```
+
+ - use the `@ApiResponses` annotation, only for online Swagger documentation. Status and representation are deduced from the signature of the method:
+
+```java
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "the added company"),
+            @ApiResponse(code = 422, message = "company not valid", response = BadEntityException.class)
+    })
+```
+
+####  Customization of a bean, thanks to Jackson annotations in order to control serialization/documentation, only if you leverage the Jackson extension
+ - use the `@JsonInclude(JsonInclude.Include.NON_EMPTY)` to exclude empty or null attributes (cf class BadEntityException)
+ - use the {@link JsonRootName} annotation: defines the name of the root element of the Json (cf class CompanyList)
+ - use the {@link JsonProperty} annotation : the name of the property in the serialized representation (cf class Company).
+ - use the {@link JacksonXmlElementWrapper} annotation: in the XML representation, the "tags" attribute is wrapped inside a "tags" element (cf class CompanyList).
+ - use the {@link JacksonXmlProperty} annotation: in the XML representation, any "Tag" element is marked as "tag" instead of "tags" (cf class CompanyList).
+
+####  Customization of a bean, thanks to Swagger annotations in order to control the documentation of the bean:
+ - use the {@link ApiModelProperty} annotation : the description of the annotated field.
+
 ##List of sample commands available.
 
 ```
