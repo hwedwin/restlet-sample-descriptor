@@ -63,6 +63,7 @@ mvn test -Pexport-to-apispark -Dexec.classpathScope="test" -Dapispark.login=<you
  - use the `@JsonInclude(JsonInclude.Include.NON_EMPTY)` to exclude empty or null attributes (cf class BadEntityException)
  - use the {@link JsonRootName} annotation: defines the name of the root element of the Json (cf class CompanyList)
  - use the {@link JsonProperty} annotation : the name of the property in the serialized representation (cf class Company).
+ - use the {@JacksonXmlRootElement} annotation: in the XML representation, sets the name of the root element.
  - use the {@link JacksonXmlElementWrapper} annotation: in the XML representation, the "tags" attribute is wrapped inside a "tags" element (cf class CompanyList).
  - use the {@link JacksonXmlProperty} annotation: in the XML representation, any "Tag" element is marked as "tag" instead of "tags" (cf class CompanyList).
 
