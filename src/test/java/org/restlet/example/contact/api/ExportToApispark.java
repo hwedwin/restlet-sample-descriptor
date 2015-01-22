@@ -27,6 +27,8 @@ package org.restlet.example.contact.api;
 import org.restlet.ext.apispark.Introspector;
 
 /**
+ * Introspect your code and export the web API as a Descriptor cell to APISpark.
+ * 
  * @author Manuel Boillod
  */
 public class ExportToApispark {
@@ -51,15 +53,14 @@ public class ExportToApispark {
     public static void exportWebApi_asDescriptor_toApiSpark() throws Exception {
         Introspector.main(new String[] {
                 "-S",
-                "http://localhost:9999",
+                "https://apispark.restlet.com",
                 // TODO Enter your username (from your APISpark account), or use
                 // the "apispark.login" system property
                 "-u",
                 System.getProperty("apispark.login", "YOUR USERNAME"),
                 // TODO Enter your secret key (from your APISpark account), or
                 // use the "apispark.password" system property
-                "-p",
-                System.getProperty("apispark.password", "YOUR PASSWORD"),
+                "-p", System.getProperty("apispark.password", "YOUR PASSWORD"),
                 "--create-descriptor",
                 "org.restlet.example.contact.api.ContactsApplication" });
     }
