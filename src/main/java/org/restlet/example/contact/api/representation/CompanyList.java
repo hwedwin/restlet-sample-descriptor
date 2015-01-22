@@ -35,8 +35,23 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 /**
  * Acts as container for list of companies.<br>
- * TODO because XML
- * https://github.com/FasterXML/jackson-dataformat-xml#known-limitations
+ * It is mainly used in order to gain fine control on the way we generate XML
+ * document via Jackson.<br>
+ * 
+ * This sample code leverages several annotations in order to control the
+ * serialization:
+ * <ul>
+ * <li>the {@link JacksonXmlRootElement} annotation : the root element of the
+ * XML representation will be called "companies".</li>
+ * <li>the {@link JacksonXmlElementWrapper} annotation: in the XML
+ * representation, the "companies" attribute won't be wrapped inside a "list"
+ * element.</li>
+ * <li>the {@link JacksonXmlProperty} annotation: in the XML representation, any
+ * "Tag" element is marked as "company" instead of "companies".</li>
+ * </ul>
+ * <br>
+ * 
+ * @see https://github.com/FasterXML/jackson-dataformat-xml#known-limitations
  * 
  * @author Manuel Boillod
  */

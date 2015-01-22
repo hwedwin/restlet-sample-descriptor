@@ -24,14 +24,35 @@
 
 package org.restlet.example.contact.api.model;
 
+import java.util.Date;
+
+import org.restlet.example.contact.api.core.validation.ValidationErrors;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Strings;
 import com.wordnik.swagger.annotations.ApiModelProperty;
-import org.restlet.example.contact.api.core.validation.ValidationErrors;
 
-import java.util.Date;
-
+/**
+ * Represents a Contact.<br>
+ * This sample code leverages several annotations in order to control the
+ * serialization:
+ * <ul>
+ * <li>the {@link JsonProperty} annotation : the name of the property in the
+ * serialized representation.</li>
+ * <li>the {@link JsonFormat} annotation : the format applied to the current
+ * value of the property (for instance in case of Date values).</li>
+ * </ul>
+ * <br>
+ * This sample code leverages several Swagger annotations in order to control
+ * the documentation of the bean:
+ * <ul>
+ * <li>the {@link ApiModelProperty} annotation : the description of the
+ * annotated field.</li>
+ * </ul>
+ * 
+ * @author Manuel Boillod
+ */
 public class Contact {
 
     private Integer id;
@@ -99,10 +120,12 @@ public class Contact {
             validationErrors.addFieldError("id", "This field is required");
         }
         if (Strings.isNullOrEmpty(firstName)) {
-            validationErrors.addFieldError("first_name", "This field is required");
+            validationErrors.addFieldError("first_name",
+                    "This field is required");
         }
         if (Strings.isNullOrEmpty(lastName)) {
-            validationErrors.addFieldError("last_name", "This field is required");
+            validationErrors.addFieldError("last_name",
+                    "This field is required");
         }
         validationErrors.checkErrors("Contact entity is not valid");
     }

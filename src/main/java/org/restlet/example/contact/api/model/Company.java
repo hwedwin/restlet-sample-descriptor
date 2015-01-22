@@ -24,17 +24,39 @@
 
 package org.restlet.example.contact.api.model;
 
+import java.util.List;
+
+import org.restlet.example.contact.api.core.validation.ValidationErrors;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.google.common.base.Strings;
 import com.wordnik.swagger.annotations.ApiModelProperty;
-import org.restlet.example.contact.api.core.validation.ValidationErrors;
-
-import java.util.List;
 
 /**
+ * Represents a Company.<br>
+ * This sample code leverages several annotations in order to control the
+ * serialization:
+ * <ul>
+ * <li>the {@link JsonRootName} annotation : the root element of the Json
+ * representation will be called "Company".</li>
+ * <li>the {@link JsonProperty} annotation : the name of the property in the
+ * serialized representation.</li>
+ * <li>the {@link JacksonXmlElementWrapper} annotation: in the XML
+ * representation, the "tags" attribute is wrapped inside a "tags" element.</li>
+ * <li>the {@link JacksonXmlProperty} annotation: in the XML representation, any
+ * "Tag" element is marked as "tag" instead of "tags".</li>
+ * </ul>
+ * <br>
+ * This sample code leverages several Swagger annotations in order to control
+ * the documentation of the bean:
+ * <ul>
+ * <li>the {@link ApiModelProperty} annotation : the description of the
+ * annotated field.</li>
+ * </ul>
+ * 
  * @author Manuel Boillod
  */
 @JsonRootName("Company")
