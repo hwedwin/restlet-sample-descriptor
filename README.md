@@ -21,9 +21,15 @@ The main method in located in the ContactsApplication class.
 
 2. Run the introspection code
 
+ - using Maven command
+
 ```
 mvn test -Pexport-to-apispark -Dapispark.username=<your username> -Dapispark.secretkey=<your secret key>
 ```
+
+ - without Maven
+The main method is located in the `org.restlet.example.contact.api.ExportToApispark` class which source is indicated here `./src/test/java/org/restlet/example/contact/api/ExportToApispark.java`.
+In order to set your credentials, you can either edit the source code, or use the `apispark.username` and `apispark.secretkey` system properties.
 
 ### Where to customize part of the documentation
  - ContactsApplication class
