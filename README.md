@@ -60,15 +60,15 @@ mvn test -Pexport-to-apispark -Dexec.classpathScope="test" -Dapispark.login=<you
 ```
 
 ####  Customization of a bean, thanks to Jackson annotations in order to control serialization/documentation, only if you leverage the Jackson extension
- - use the `@JsonInclude(JsonInclude.Include.NON_EMPTY)` to exclude empty or null attributes (cf class BadEntityException)
- - use the {@link JsonRootName} annotation: defines the name of the root element of the Json (cf class CompanyList)
- - use the {@link JsonProperty} annotation : the name of the property in the serialized representation (cf class Company).
- - use the {@JacksonXmlRootElement} annotation: in the XML representation, sets the name of the root element.
- - use the {@link JacksonXmlElementWrapper} annotation: in the XML representation, the "tags" attribute is wrapped inside a "tags" element (cf class CompanyList).
- - use the {@link JacksonXmlProperty} annotation: in the XML representation, any "Tag" element is marked as "tag" instead of "tags" (cf class CompanyList).
+ - use the `@JsonInclude(JsonInclude.Include.NON_EMPTY)` annotation to exclude empty or null attributes (cf class BadEntityException)
+ - use the `@JsonRootName` annotation: defines the name of the root element of the Json (cf class CompanyList)
+ - use the `@JsonProperty` annotation : the name of the property in the serialized representation (cf class Company).
+ - use the `@JacksonXmlRootElement` annotation: in the XML representation, sets the name of the root element.
+ - use the `@link JacksonXmlElementWrapper` annotation: in the XML representation, the "tags" attribute is wrapped inside a "tags" element (cf class CompanyList).
+ - use the `@link JacksonXmlProperty` annotation: in the XML representation, any "Tag" element is marked as "tag" instead of "tags" (cf class CompanyList).
 
 ####  Customization of a bean, thanks to Swagger annotations in order to control the documentation of the bean:
- - use the {@link ApiModelProperty} annotation : the description of the annotated field.
+ - use the `@ApiModelProperty` annotation : the description of the annotated field.
 
 ##List of sample commands available.
 
