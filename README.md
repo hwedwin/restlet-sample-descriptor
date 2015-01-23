@@ -64,8 +64,8 @@ mvn test -Pexport-to-apispark -Dapispark.login=<your username> -Dapispark.passwo
  - use the `@JsonRootName` annotation: defines the name of the root element of the Json (cf class CompanyList)
  - use the `@JsonProperty` annotation : the name of the property in the serialized representation (cf class Company).
  - use the `@JacksonXmlRootElement` annotation: in the XML representation, sets the name of the root element.
- - use the `@link JacksonXmlElementWrapper` annotation: in the XML representation, the "tags" attribute is wrapped inside a "tags" element (cf class CompanyList).
- - use the `@link JacksonXmlProperty` annotation: in the XML representation, any "Tag" element is marked as "tag" instead of "tags" (cf class CompanyList).
+ - use the `@JacksonXmlElementWrapper` annotation: in the XML representation, the "tags" attribute is wrapped inside a "tags" element (cf class CompanyList).
+ - use the `@JacksonXmlProperty` annotation: in the XML representation, any "Tag" element is marked as "tag" instead of "tags" (cf class CompanyList).
 
 ####  Customization of a bean, thanks to Swagger annotations in order to control the documentation of the bean:
  - use the `@ApiModelProperty` annotation : the description of the annotated field.
