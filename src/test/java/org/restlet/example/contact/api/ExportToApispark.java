@@ -51,17 +51,29 @@ public class ExportToApispark {
      * Exports the web API as a Descriptor cell to APISpark.
      */
     public static void exportWebApi_asDescriptor_toApiSpark() throws Exception {
-        Introspector.main(new String[] {
-                "-S",
-                "https://apispark.restlet.com",
-                // TODO Enter your username (from your APISpark account), or use
-                // the "apispark.login" system property
-                "-u",
-                System.getProperty("apispark.login", "YOUR USERNAME"),
-                // TODO Enter your secret key (from your APISpark account), or
-                // use the "apispark.password" system property
-                "-p", System.getProperty("apispark.password", "YOUR PASSWORD"),
-                "--create-descriptor",
+        // TODO Enter your username (from your APISpark account)
+        String username = null;
+        if (System.getProperty("apispark.username") != null) {
+            username = System.getProperty("apispark.username");
+        }
+        if (username == null) {
+            throw new IllegalArgumentException(
+                    "You should specify your APISpark username in java code or with system propery 'apispark.username'");
+        }
+
+        // TODO Enter your secret key (from your APISpark account)
+        String secretKey = "YOUR SECRET KEY";
+        if (System.getProperty("apispark.secret") != null) {
+            secretKey = System.getProperty("apispark.secret");
+        }
+        if (secretKey == null) {
+            throw new IllegalArgumentException(
+                    "You should specify your APISpark secret key in java code or with system propery 'apispark.secret'");
+        }
+
+        Introspector.main(new String[] { "-S", "http://v2.apispark.com", "-u",
+                username, "-p", secretKey, "--create-descriptor",
                 "org.restlet.example.contact.api.ContactsApplication" });
     }
+
 }
