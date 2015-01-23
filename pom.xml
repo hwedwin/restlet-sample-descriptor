@@ -89,6 +89,7 @@
 									<goal>java</goal>
 								</goals>
 								<configuration>
+									<classpathScope>test</classpathScope>
 									<mainClass>org.restlet.example.contact.api.ExportToApispark</mainClass>
 									<arguments />
 								</configuration>

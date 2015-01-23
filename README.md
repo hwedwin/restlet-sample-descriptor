@@ -22,7 +22,7 @@ The main method in located in the ContactsApplication class.
 2. Run the introspection code
 
 ```
-mvn test -Pexport-to-apispark -Dexec.classpathScope="test" -Dapispark.login=<your username> -Dapispark.password=<your secret key>
+mvn test -Pexport-to-apispark -Dapispark.login=<your username> -Dapispark.password=<your secret key>
 ```
 
 ### Where to customize part of the documentation
