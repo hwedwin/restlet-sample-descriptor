@@ -55,11 +55,18 @@ import org.restlet.resource.Status;
  * 
  * @author Manuel Boillod
  */
+ @Api(value = "Contacts", description = "Contact list resource")
 public interface ContactsResource {
 
+    @ApiOperation(value = "list the contacts", tags = "contact")
+    @ApiResponses({ @ApiResponse(code = 200, message = "the list of contacts"), })
     @Get
     ContactList getContacts();
 
+    @ApiOperation(value = "add a contact", tags = "contact")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "the added contact"),
+            @ApiResponse(code = 422, message = "contact not valid", response = BadEntityException.class) })
     @Post
     Contact addContact(Contact contact) throws BadEntityException;
 
