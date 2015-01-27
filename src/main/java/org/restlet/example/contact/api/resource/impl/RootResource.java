@@ -29,6 +29,8 @@ import org.restlet.resource.ClientResource;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
+import com.wordnik.swagger.annotations.ApiOperation;
+
 /**
  * This resource will be automatically documented as well even if it does not
  * rely on an interface.
@@ -43,6 +45,7 @@ public class RootResource extends ServerResource {
         setDescription("Readme resource");
     }
 
+    @ApiOperation("readme")
     @Get("txt")
     public Representation getReadme() {
         return new ClientResource(

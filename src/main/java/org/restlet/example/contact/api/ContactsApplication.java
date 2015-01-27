@@ -83,6 +83,7 @@ public class ContactsApplication extends Application {
         Component component = new Component();
         component.setName("contact application");
         component.getServers().add(Protocol.HTTP, 8000);
+        component.getClients().add(Protocol.CLAP);
         component.getDefaultHost().attach(new ContactsApplication());
         component.start();
 
@@ -127,7 +128,10 @@ public class ContactsApplication extends Application {
     public Router publicResources() {
         Router router = new Router();
 
-        router.attach("/", RootResource.class);
+        /*
+         * Todo: root-level resources cause introspection to fail
+         */
+//        router.attach("/", RootResource.class);
 
         // Attach Swagger Specifications
         attachSwaggerSpecification1(router);
