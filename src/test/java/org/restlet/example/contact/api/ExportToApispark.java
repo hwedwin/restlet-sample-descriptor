@@ -63,8 +63,8 @@ public class ExportToApispark {
 
         // TODO Enter your secret key (from your APISpark account)
         String secretKey = "YOUR SECRET KEY";
-        if (System.getProperty("apispark.secret") != null) {
-            secretKey = System.getProperty("apispark.secret");
+        if (System.getProperty("apispark.secretkey") != null) {
+            secretKey = System.getProperty("apispark.secretkey");
         }
         if (secretKey == null) {
             throw new IllegalArgumentException(
