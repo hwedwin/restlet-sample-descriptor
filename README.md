@@ -3,7 +3,7 @@
 The source code is available in git repository:
 
 ```
-git clone https://github.com/restlet/restlet-sample-descriptors.git
+git clone https://github.com/restlet/restlet-sample-descriptor.git
 ```
 
 The main method in located in the ContactsApplication class.
