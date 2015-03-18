@@ -71,7 +71,7 @@ public class ExportToApispark {
                     "You should specify your APISpark secret key in java code or with system propery 'apispark.secret'");
         }
 
-        Introspector.main(new String[] { "-S", "https://apispark.restlet.com", "-u",
+        Introspector.main(new String[] { "-u",
                 username, "-p", secretKey, "--create-descriptor",
                 "org.restlet.example.contact.api.ContactsApplication" });
     }
