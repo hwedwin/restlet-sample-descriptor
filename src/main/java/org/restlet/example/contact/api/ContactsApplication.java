@@ -37,7 +37,6 @@ import org.restlet.example.contact.api.resource.impl.CompaniesServerResource;
 import org.restlet.example.contact.api.resource.impl.CompanyServerResource;
 import org.restlet.example.contact.api.resource.impl.ContactServerResource;
 import org.restlet.example.contact.api.resource.impl.ContactsServerResource;
-import org.restlet.example.contact.api.resource.impl.RootResource;
 import org.restlet.ext.swagger.Swagger2SpecificationRestlet;
 import org.restlet.ext.swagger.SwaggerSpecificationRestlet;
 import org.restlet.routing.Router;
@@ -128,10 +127,8 @@ public class ContactsApplication extends Application {
     public Router publicResources() {
         Router router = new Router();
 
-        /*
-         * Todo: root-level resources cause introspection to fail
-         */
-//        router.attach("/", RootResource.class);
+        // FIXME: fix file introspection
+        // router.attach("/", RootResource.class);
 
         // Attach Swagger Specifications
         attachSwaggerSpecification1(router);
