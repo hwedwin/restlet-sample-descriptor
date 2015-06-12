@@ -24,6 +24,10 @@
 
 package org.restlet.example.contact.api.resource.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.restlet.example.contact.api.ContactsApplication;
 import org.restlet.example.contact.api.core.exception.BadEntityException;
 import org.restlet.example.contact.api.core.exception.NotFoundException;
@@ -31,6 +35,7 @@ import org.restlet.example.contact.api.core.util.ResourceUtils;
 import org.restlet.example.contact.api.model.Company;
 import org.restlet.example.contact.api.persistence.CompanyPersistence;
 import org.restlet.example.contact.api.resource.CompanyResource;
+import org.restlet.ext.apispark.internal.introspection.DocumentedResource;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 
@@ -41,7 +46,7 @@ import org.restlet.resource.ServerResource;
  * @author Manuel Boillod
  */
 public class CompanyServerResource extends ServerResource implements
-        CompanyResource {
+        CompanyResource, DocumentedResource {
 
     private Integer companyId;
 
@@ -81,5 +86,10 @@ public class CompanyServerResource extends ServerResource implements
         if (!CompanyPersistence.INSTANCE.deleteCompany(companyId)) {
             throw new NotFoundException("No company with id: " + companyId);
         }
+    }
+
+    @Override
+    public List<String> getSections() {
+        return new ArrayList<>(Arrays.asList("company"));
     }
 }

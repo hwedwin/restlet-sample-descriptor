@@ -24,6 +24,10 @@
 
 package org.restlet.example.contact.api.resource.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.restlet.example.contact.api.ContactsApplication;
 import org.restlet.example.contact.api.core.exception.BadEntityException;
 import org.restlet.example.contact.api.core.util.ResourceUtils;
@@ -31,6 +35,7 @@ import org.restlet.example.contact.api.model.Contact;
 import org.restlet.example.contact.api.persistence.ContactPersistence;
 import org.restlet.example.contact.api.representation.ContactList;
 import org.restlet.example.contact.api.resource.ContactsResource;
+import org.restlet.ext.apispark.internal.introspection.DocumentedResource;
 import org.restlet.resource.ServerResource;
 
 /**
@@ -42,7 +47,7 @@ import org.restlet.resource.ServerResource;
  * @author Manuel Boillod
  */
 public class ContactsServerResource extends ServerResource implements
-        ContactsResource {
+        ContactsResource, DocumentedResource {
 
     /**
      * Constructor, documents the name and description of the resource.
@@ -64,5 +69,10 @@ public class ContactsServerResource extends ServerResource implements
         ResourceUtils.notNull(contact);
         contact.validate();
         return ContactPersistence.INSTANCE.addContact(contact);
+    }
+
+    @Override
+    public List<String> getSections() {
+        return new ArrayList<>(Arrays.asList("contact"));
     }
 }

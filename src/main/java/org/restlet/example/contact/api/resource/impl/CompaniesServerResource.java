@@ -24,6 +24,10 @@
 
 package org.restlet.example.contact.api.resource.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.restlet.example.contact.api.ContactsApplication;
 import org.restlet.example.contact.api.core.exception.BadEntityException;
 import org.restlet.example.contact.api.core.util.ResourceUtils;
@@ -31,11 +35,20 @@ import org.restlet.example.contact.api.model.Company;
 import org.restlet.example.contact.api.persistence.CompanyPersistence;
 import org.restlet.example.contact.api.representation.CompanyList;
 import org.restlet.example.contact.api.resource.CompaniesResource;
+import org.restlet.ext.apispark.internal.introspection.DocumentedResource;
+import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
-public class CompaniesServerResource extends ServerResource implements
-        CompaniesResource {
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 
+public class CompaniesServerResource extends ServerResource implements
+        CompaniesResource, DocumentedResource {
+
+    @ApiOperation(value = "list the companies", tags = "company")
+    @ApiResponses({ @ApiResponse(code = 200, message = "the list of companies"), })
+    @Get
     @Override
     public CompanyList getCompanies() {
         ResourceUtils.checkRoles(this, ContactsApplication.ROLE_USER);
@@ -48,5 +61,10 @@ public class CompaniesServerResource extends ServerResource implements
         ResourceUtils.notNull(company);
         company.validate();
         return CompanyPersistence.INSTANCE.addCompany(company);
+    }
+
+    @Override
+    public List<String> getSections() {
+        return new ArrayList<>(Arrays.asList("company"));
     }
 }

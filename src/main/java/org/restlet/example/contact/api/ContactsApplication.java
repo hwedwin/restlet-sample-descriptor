@@ -37,7 +37,6 @@ import org.restlet.example.contact.api.resource.impl.CompaniesServerResource;
 import org.restlet.example.contact.api.resource.impl.CompanyServerResource;
 import org.restlet.example.contact.api.resource.impl.ContactServerResource;
 import org.restlet.example.contact.api.resource.impl.ContactsServerResource;
-import org.restlet.example.contact.api.resource.impl.RootResource;
 import org.restlet.ext.swagger.Swagger2SpecificationRestlet;
 import org.restlet.ext.swagger.SwaggerSpecificationRestlet;
 import org.restlet.routing.Router;
@@ -94,7 +93,7 @@ public class ContactsApplication extends Application {
      * Constructor. Let us define the name and a description of the application.
      */
     public ContactsApplication() {
-        setName("Contacts API application");
+        setName("RS_Swagger_Sample_URL");
         setDescription("Full description of the Contacts API");
 
         // roles are defined at the level of the application, and are used to
@@ -126,8 +125,6 @@ public class ContactsApplication extends Application {
      */
     public Router publicResources() {
         Router router = new Router();
-
-        router.attach("/", RootResource.class);
 
         // Attach Swagger Specifications
         attachSwaggerSpecification1(router);
